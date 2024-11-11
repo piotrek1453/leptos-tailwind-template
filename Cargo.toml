@@ -7,3 +7,16 @@ edition = "2021"
 console_error_panic_hook = ">=0.1.7"
 leptos = { version = ">=0.6.15", features = ["csr", "nightly"] }
 leptos_router = { version = "0.6.15", features = ["csr", "nightly"] }
+
+[profile.wasm-release]
+inherits = "release"
+opt-level = 'z'
+lto = true
+codegen-units = 1
+
+
+[package.metadata.leptos]
+lib-profile-release = "wasm-release"
+
+[profile.release]
+panic = "abort"
